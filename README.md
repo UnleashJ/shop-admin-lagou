@@ -1,16 +1,39 @@
-# Vue 3 + TypeScript + Vite
+# 代码规范与`ESLint`
+## 安装与初始化
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+```shell
+npm install eslint --save-dev
+```
 
-## Recommended IDE Setup
+初始化 `ESLint` 配置，并根据提示进行选择，生成配置文件
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
+```
+npx eslint --init
+```
 
-## Type Support For `.vue` Imports in TS
+详细配置可参考[vue-eslint-plugin](https://eslint.vuejs.org/)
 
-Since TypeScript cannot handle type information for `.vue` imports, they are shimmed to be a generic Vue component type by default. In most cases this is fine if you don't really care about component prop types outside of templates. However, if you wish to get actual prop types in `.vue` imports (for example to get props validation when using manual `h(...)` calls), you can enable Volar's Take Over mode by following these steps:
 
-1. Run `Extensions: Show Built-in Extensions` from VS Code's command palette, look for `TypeScript and JavaScript Language Features`, then right click and select `Disable (Workspace)`. By default, Take Over mode will enable itself if the default TypeScript extension is disabled.
-2. Reload the VS Code window by running `Developer: Reload Window` from the command palette.
 
-You can learn more about Take Over mode [here](https://github.com/johnsoncodehk/volar/discussions/471).
+## 配置 git commit hook
+
+使用[lint-staged](https://github.com/okonet/lint-staged#readme)与[Husky](https://github.com/typicode/husky)在代码提交前（`git commit` 前），进行`ESLint`的规范校验。
+
+
+
+## [vite-plugin-eslint](https://github.com/gxmari007/vite-plugin-eslint) 
+安装`vite-plugin-eslint`插件，在`vite.config.ts`中进行配置（详见官网）。在开发和构建时，当`ESLint`检测出代码规范问题，可以在控制台中和浏览器页面中显示出来。
+
+
+
+## git commit 提交规范
+
+- [commitlint](https://github.com/conventional-changelog/commitlint)：验证 git commit 日志是否符合规范
+- [Commitizen](https://github.com/commitizen/cz-cli)：辅助编写符合 git commit 规范的工具
+
+commitlint Add hook
+
+```shell
+npx husky add .husky/commit-msg 'npx --no -- commitlint --edit "\${1}"'
+```
+
