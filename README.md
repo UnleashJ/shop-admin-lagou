@@ -31,7 +31,7 @@ npx eslint --init
 - [commitlint](https://github.com/conventional-changelog/commitlint)：验证 git commit 日志是否符合规范
 - [Commitizen](https://github.com/commitizen/cz-cli)：辅助编写符合 git commit 规范的工具
 
-commitlint Add hook
+commitlint Add hook 
 
 ```shell
 npx husky add .husky/commit-msg 'npx --no -- commitlint --edit "\${1}"'
